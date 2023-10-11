@@ -5,12 +5,6 @@ let objects = [
    ]
 function filter(arrObjects,property,value)
 {
-    let arrResult=[];
-    for(obj of arrObjects)
-    {
-        if (obj[property]==value)
-            arrResult.push(obj);
-    }
-    return arrResult;
+    return arrObjects.filter(el=>el[property]===value);
 }
-console.log(filter(objects,'name','Иван'));
+console.log(filter(objects,'name','Пётр'));

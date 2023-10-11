@@ -7,16 +7,6 @@ let allUsers=[
    ]
 function getOlderUserArray(arrUsers)
 {
-    let nameOld;
-    let maxAge=0;
-    for (user of arrUsers)
-    {
-        if (user.age>maxAge)
-        {
-            nameOld=user.name;
-            maxAge=user.age;
-        }
-    }
-    return nameOld;
+    return arrUsers.sort((a,b)=>(b.age-a.age))[0];
 }
 console.log(getOlderUserArray(allUsers));
