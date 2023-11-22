@@ -19,18 +19,18 @@
         button.classList.add('btn', 'btn-primary');
         button.textContent='Добавить дело';
 
-        //button.disabled = true
+        button.disabled = true
 
         buttonWrapper.append(button);
         form.append(input);
         form.append(buttonWrapper);
 
-        /*input.addEventListener('input', function(e) {
+        input.addEventListener('input', function(e) {
             e.preventDefault();
             if (input.value.length > 0){
                 button.disabled = false
             }
-        })*/
+        })
 
         return{
             form,
@@ -113,7 +113,7 @@
                 todoItem.deleteButton.addEventListener('click',function(){
                     if (confirm('Вы уверены?')){
                         todoItem.item.remove();
-                        toDoList = toDoList.filter(e=> e.id !== toDo.id)
+                        toDoList = toDoList.filter(e=> e.id !== todoItem.id)
                         SetData(listName, toDoList)
                     }
                 })
@@ -132,7 +132,7 @@
             if (!todoItemForm.input.value){
                 return ;
             }
-            
+
             const toDo = {
                 name: todoItemForm.input.value,
                 done: false, 
