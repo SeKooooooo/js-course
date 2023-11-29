@@ -84,7 +84,7 @@
     const SetData = (key, data) => localStorage.setItem(key,JSON.stringify(data))
 
     const GetData = key => JSON.parse(localStorage.getItem(key))
-
+    
     function createTodoApp(container,title='Список дел', listName) {
         let todoAppTitle=createAppTitle(title);
         let todoItemForm=createTodoItemForm();

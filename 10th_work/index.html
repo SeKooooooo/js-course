@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="./main.js"></script>
+</head>
+<body>
+    <div class="container" id="tabl">
+        <div class="filters">
+            <form action="#" value="">
+                <label class="filter-name-label" for="filter-name-input">Введите часть ФИО</label>
+                <input type="text" class="filter-name-input" id="filter-name">
+                <button class="filter-btn-name" type="submit">Отправить</button>
+            </form>
+            <form action="#" value="">
+                <label class="filter-faculty-label" for="filter-faculty-input">Введите факультет</label>
+                <input type="text" class="filter-faculty-input" id="filter-faculty">
+                <button class="filter-btn-faculty" type="submit">Отправить</button>
+            </form>
+            <form action="#" value="">
+                <label class="filter-fyear-label" for="filter-fyear-input">Введите год начала учебы</label>
+                <input type="text" class="filter-fyear-input" id="filter-fyear">
+                <button class="filter-btn-fyear" type="submit">Отправить</button>
+            </form>
+            <form action="#" value="">
+                <label class="filter-lyear-label" for="filter-lyear-input">Введите год конца учебы</label>
+                <input type="text" class="filter-lyear-input" id="filter-lyear">
+                <button class="filter-btn-lyear" type="submit">Отправить</button>
+            </form>
+        </div>
+        <div class="none" id = "add">
+            <form action="#" value="">
+                <div class="forms">
+                    <label class="name-label" for="name-input">Введите ФИО</label>
+                    <input type="text" class="name-input" id="name">
+                    <label class="faculty-label" for="faculty-input">Введите Факультет</label>
+                    <input type="text" class="faculty-input" id="faculty">
+                    <label class="birthday-label" for="birthday-input">Введите день рождения</label>
+                    <input type="date" class="birthday-input" id="birthday">
+                    <label class="year-label" for="year-input">Введите год начала учебы</label>
+                    <input type="text" class="year-input" id="year">
+                </div>
+                <button class="btn-submit" type="submit">Отправить</button>
+            </form>
+        </div>
+        <button class="add-student">Добавить студента</button>
+        <div class="table">
+            <ul class="table-title">
+                <li class="name">Ф. И. О. студента</li>
+                <li class="faculty">Факультет</li>
+                <li class="age">Дата рождения и возраст</li>
+                <li class="years-of-education">Годы обучения и номер курса</li>
+            </ul>
+        </div>
+    </div>  
+</body>
+</html>
