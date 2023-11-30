@@ -45,7 +45,7 @@
         return list;
     }
 
-    function createTodoItem(toDo){
+    function createTodoItem(toDo,toDoList,listName){
         let item=document.createElement('li');
         //кнопки помещаем в элемент который красиво покажет их в одной группе
         let buttonGroup=document.createElement('div');
@@ -63,6 +63,9 @@
         deleteButton.classList.add('btn', 'btn-danger');
         deleteButton.textContent='Удалить';
 
+        if (toDo.done)
+            item.classList.add('list-group-item-success')
+
         doneButton.addEventListener('click', function(){
             item.classList.toggle('list-group-item-success');
             toDoList = toDoList.map(el => {
@@ -70,6 +73,7 @@
                     el.done = !el.done
                 return el
             } )
+            console.log(toDoList)
             SetData(listName, toDoList)
         });
         deleteButton.addEventListener('click',function(){
@@ -112,7 +116,7 @@
         if (GetData(listName)){
             toDoList = GetData(listName)
             toDoList.forEach(el => {
-                let todoItem = createTodoItem(el)
+                let todoItem = createTodoItem(el,toDoList,listName)
                 todoList.append(todoItem)
             })
         }
@@ -134,7 +138,7 @@
                 done: false, 
                 id:GetId(toDoList)}
 
-            let todoItem=createTodoItem(toDo)       
+            let todoItem=createTodoItem(toDo,toDoList,listName)       
             toDoList.push(toDo)
             SetData(listName, toDoList)
             
