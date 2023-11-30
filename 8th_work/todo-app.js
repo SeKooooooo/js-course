@@ -63,17 +63,30 @@
         deleteButton.classList.add('btn', 'btn-danger');
         deleteButton.textContent='Удалить';
 
+        doneButton.addEventListener('click', function(){
+            item.classList.toggle('list-group-item-success');
+            toDoList = toDoList.map(el => {
+                if (el.id == toDo.id)
+                    el.done = !el.done
+                return el
+            } )
+            SetData(listName, toDoList)
+        });
+        deleteButton.addEventListener('click',function(){
+            if (confirm('Вы уверены?')){
+                item.remove();
+                toDoList = toDoList.filter(e=> e.id !== toDo.id)
+                SetData(listName, toDoList)
+            }
+        })
+
         //вкладываем кнопки в отдельный элемент, чтобы они объединились в один блок
         buttonGroup.append(doneButton);
         buttonGroup.append(deleteButton);
         item.append(buttonGroup);
 
         //приложению нужен доступ к самому элементу и кнопкам, чтобы отрабатывать события нажатия
-        return {
-            item,
-            doneButton,
-            deleteButton
-        };
+        return item
     }
 
     const GetId = arr =>{
@@ -100,25 +113,8 @@
             toDoList = GetData(listName)
             toDoList.forEach(el => {
                 let todoItem = createTodoItem(el)
-                todoList.append(todoItem.item)
-                todoItem.doneButton.addEventListener('click', function(){
-                    todoItem.item.classList.toggle('list-group-item-success');
-                    toDoList = toDoList.map(el => {
-                        if (el.id == todoItem.id)
-                            el.done = !el.done
-                        return el
-                    } )
-                    SetData(listName, toDoList)
-                });
-                todoItem.deleteButton.addEventListener('click',function(){
-                    if (confirm('Вы уверены?')){
-                        todoItem.item.remove();
-                        toDoList = toDoList.filter(e=> e.id !== todoItem.id)
-                        SetData(listName, toDoList)
-                    }
-                })
-            });
-            
+                todoList.append(todoItem)
+            })
         }
 
         //браузер создает событие submit на форме по нажатию на Enter или на кнопку создания дела
@@ -141,25 +137,9 @@
             let todoItem=createTodoItem(toDo)       
             toDoList.push(toDo)
             SetData(listName, toDoList)
-            //добавляем обработчики на кнопки
-            todoItem.doneButton.addEventListener('click', function(){
-                todoItem.item.classList.toggle('list-group-item-success');
-                toDoList = toDoList.map(el => {
-                    if (el.id == toDo.id)
-                        el.done = !el.done
-                    return el
-                } )
-                SetData(listName, toDoList)
-            });
-            todoItem.deleteButton.addEventListener('click',function(){
-                if (confirm('Вы уверены?')){
-                    todoItem.item.remove();
-                    toDoList = toDoList.filter(e=> e.id !== toDo.id)
-                    SetData(listName, toDoList)
-                }
-            })
+            
             //создаем и добавляем в список новое дело с навзванием поля для ввода
-            todoList.append(todoItem.item);
+            todoList.append(todoItem);
             //обнуляем значение в поле
             todoItemForm.input.value='';
         })
